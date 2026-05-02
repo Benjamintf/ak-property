@@ -10,6 +10,6 @@ export default getRequestConfig(async ({locale}) => {
 
   return {
     // ማሳሰቢያ፡ የ 'messages' ፎልደር ከ 'src' ውጭ ከሆነ '../' ተጠቀም
-    messages: (await import(`../messages/${locale}.json`)).default
+messages: (await import(`../../messages/${locale}.json`)).default
   };
 });
