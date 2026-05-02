@@ -16,7 +16,7 @@ export default function Home() {
           <a href="#about" className="hover:text-blue-600 transition text-blue-900">ABOUT ME</a>
         </div>
         <a href="https://wa.me/251913739983" className="bg-blue-600 text-white px-6 py-2 rounded-full font-bold hover:bg-blue-800 transition shadow-lg">
-          ያግኙኝ
+          CONTACT ME
         </a>
       </nav>
 
@@ -54,15 +54,15 @@ export default function Home() {
       </section>
 <div className="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-2xl -mt-10 relative z-10">
   <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-    {/* የቦታ መምረጫ */}
+    {/* LOCATION */}
     <div className="flex flex-col">
-      <label className="text-sm font-semibold text-gray-600 mb-1">ቦታ (Location)</label>
-      <input type="text" placeholder="ለምሳሌ፦ ቦሌ" className="border p-2 rounded-lg outline-none focus:border-blue-500" />
+      <label className="text-sm font-semibold text-gray-600 mb-1">LOCATION</label>
+      <input type="text" placeholder="e.g., BOLE" className="border p-2 rounded-lg outline-none focus:border-blue-500" />
     </div>
 
-    {/* የቤት አይነት */}
+    {/* HOUSE TYPE */}
     <div className="flex flex-col">
-      <label className="text-sm font-semibold text-gray-600 mb-1">የቤት አይነት</label>
+      <label className="text-sm font-semibold text-gray-600 mb-1">HOUSE TYPE</label>
       <select className="border p-2 rounded-lg outline-none focus:border-blue-500">
         <option>አፓርታማ (Apartment)</option>
         <option>ቪላ (Villa)</option>
@@ -70,13 +70,13 @@ export default function Home() {
       </select>
     </div>
 
-    {/* ዋጋ */}
+    {/* PRICE */}
     <div className="flex flex-col">
-      <label className="text-sm font-semibold text-gray-600 mb-1">ከፍተኛ ዋጋ</label>
+      <label className="text-sm font-semibold text-gray-600 mb-1">PRICE</label>
       <select className="border p-2 rounded-lg outline-none focus:border-blue-500">
-        <option>5 ሚሊዮን - 10 ሚሊዮን</option>
-        <option>10 ሚሊዮን - 20 ሚሊዮን</option>
-        <option>ከ20 ሚሊዮን በላይ</option>
+        <option>1 ሚሊዮን - 3 ሚሊዮን</option>
+        <option>3 ሚሊዮን - 5 ሚሊዮን</option>
+        <option>ከ5 ሚሊዮን በላይ</option>
       </select>
     </div>
 
@@ -142,7 +142,7 @@ export default function Home() {
                 <p className="text-gray-500 text-sm mb-4">📍 አዲስ አበባ፣ ayat አካባቢ</p>
                 <div className="flex justify-between items-center pt-4 border-t border-gray-100">
                   <span className="text-blue-600 font-black text-xl">3.5 ሚሊዮን ብር ሙሉያ ክፍያ</span>
-                  <button className="bg-blue-50 text-blue-600 px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-600 hover:text-white transition">ዝርዝር</button>
+                  <button className="bg-blue-50 text-blue-600 px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-600 hover:text-white transition">MORE</button>
                 </div>
               </div>
             </div>
@@ -163,7 +163,7 @@ export default function Home() {
                 <p className="text-gray-500 text-sm mb-4">📍 አዲስ አበባ፣ bulgariya አካባቢ</p>
                 <div className="flex justify-between items-center pt-4 border-t border-gray-100">
                   <span className="text-blue-600 font-black text-xl">5 ሚሊዮን ብር ሙሉያ ክፍያ</span>
-                  <button className="bg-blue-50 text-blue-600 px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-600 hover:text-white transition">ዝርዝር</button>
+                  <button className="bg-blue-50 text-blue-600 px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-600 hover:text-white transition">MORE</button>
                 </div>
               </div>
             </div>
