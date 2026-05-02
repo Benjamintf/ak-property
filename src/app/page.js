@@ -171,7 +171,7 @@ export default function Home() {
             <div className="group cursor-pointer bg-white overflow-hidden rounded-3xl border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-300">
               <div className="h-64 bg-gray-200 relative overflow-hidden">
                 <img 
-                  src="/piyasa_house.jpg" 
+                  src="/piyassa_house.jpg" 
                   alt="PIYASA HOUSE" 
                   className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
                   onError={(e) => {e.target.src="https://via.placeholder.com/400x300?text=House+Photo"}}
