@@ -11,14 +11,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// src/app/layout.js ውስጥ
 export const metadata = {
-  title: 'AK Property',
-  description: "በአዲስ አበባ ምርጥ ቤቶችን በጥራት እና በታማኝነት እናቀርባለን።",
-  icons: {
+  title: "AK Property", // እዚህ ጋር "Create Next App" የሚለውን አጥፋው
+  description: "Real Estate and Property Management",
+ icons: {
     icon: '/favicon.png', // ፋይሉ app ፎልደር ውስጥ ከሆነ
   },
-}
+};
 
 export default function RootLayout({ children }) {
   return (
