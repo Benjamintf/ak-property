@@ -138,8 +138,8 @@ export default function Home() {
                 <div className="absolute top-4 left-4 bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg">ለሽያጭ</div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-blue-900 mb-2">ዘመናዊ አፓርታማ - ቦሌ</h3>
-                <p className="text-gray-500 text-sm mb-4">📍 አዲስ አበባ፣ ቦሌ መድኃኔዓለም አካባቢ</p>
+                <h3 className="text-xl font-bold text-blue-900 mb-2">ዘመናዊ አፓርታማ - ayat</h3>
+                <p className="text-gray-500 text-sm mb-4">📍 አዲስ አበባ፣ ayat አካባቢ</p>
                 <div className="flex justify-between items-center pt-4 border-t border-gray-100">
                   <span className="text-blue-600 font-black text-xl">4.5 ሚሊዮን ብር</span>
                   <button className="bg-blue-50 text-blue-600 px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-600 hover:text-white transition">ዝርዝር</button>
@@ -159,8 +159,8 @@ export default function Home() {
                 <div className="absolute top-4 left-4 bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg">ለሽያጭ</div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-blue-900 mb-2">ባለ 3 መኝታ - ሳሪስ</h3>
-                <p className="text-gray-500 text-sm mb-4">📍 አዲስ አበባ፣ ሳሪስ አቦ አካባቢ</p>
+                <h3 className="text-xl font-bold text-blue-900 mb-2">ባለ 3 መኝታ - bulgariya</h3>
+                <p className="text-gray-500 text-sm mb-4">📍 አዲስ አበባ፣ bulgariya አካባቢ</p>
                 <div className="flex justify-between items-center pt-4 border-t border-gray-100">
                   <span className="text-blue-600 font-black text-xl">3.8 ሚሊዮን ብር</span>
                   <button className="bg-blue-50 text-blue-600 px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-600 hover:text-white transition">ዝርዝር</button>
@@ -180,8 +180,8 @@ export default function Home() {
                 <div className="absolute top-4 left-4 bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg">ለሽያጭ</div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-blue-900 mb-2">ዱፕሌክስ ቪላ - ሲኤምሲ</h3>
-                <p className="text-gray-500 text-sm mb-4">📍 አዲስ አበባ፣ CMC ሰሚት አካባቢ</p>
+                <h3 className="text-xl font-bold text-blue-900 mb-2">ዱፕሌክስ ቪላ - piyassa</h3>
+                <p className="text-gray-500 text-sm mb-4">📍 አዲስ አበባ፣ Piyassa አካባቢ</p>
                 <div className="flex justify-between items-center pt-4 border-t border-gray-100">
                   <span className="text-blue-600 font-black text-xl">12 ሚሊዮን ብር</span>
                   <button className="bg-blue-50 text-blue-600 px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-600 hover:text-white transition">ዝርዝር</button>
@@ -196,8 +196,8 @@ export default function Home() {
       <footer className="bg-blue-900 text-white py-16 px-10 text-center">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold mb-6 italic">AK PROPERTY</h2>
-          <p className="text-blue-200 mb-4">ADDIS ABABA፣ ETHIOPIA</p>
-          <p className="text-blue-100 mb-8 font-mono">ስልክ፦ +251 923273175 / +251 913739983</p>
+          <p className="text-blue-200 mb-4">ADDIS ABABA / ETHIOPIA</p>
+          <p className="text-blue-100 mb-8 font-mono">PHON NUMBER +251 923273175 / +251 913739983</p>
           <div className="flex justify-center space-x-8 mb-10">
             <a href="https://t.me/PropertiesInEthiopia" className="font-bold hover:text-blue-400">Telegram</a>
             <a href="https://wa.me/251913739983" className="font-bold hover:text-blue-400">WhatsApp</a>
