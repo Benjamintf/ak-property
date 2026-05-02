@@ -12,10 +12,10 @@ export default function Home() {
           AK <span className="text-blue-500 font-light text-2xl">PROPERTY</span>
         </div>
         <div className="hidden md:flex space-x-8 font-medium">
-          <a href="#projects" className="hover:text-blue-600 transition text-blue-900">projects</a>
-          <a href="#about" className="hover:text-blue-600 transition text-blue-900">about</a>
+          <a href="#projects" className="hover:text-blue-600 transition text-blue-900">PROJECTS</a>
+          <a href="#about" className="hover:text-blue-600 transition text-blue-900">ABOUT ME</a>
         </div>
-        <a href="https://wa.me/251923273175" className="bg-blue-600 text-white px-6 py-2 rounded-full font-bold hover:bg-blue-800 transition shadow-lg">
+        <a href="https://wa.me/251913739983" className="bg-blue-600 text-white px-6 py-2 rounded-full font-bold hover:bg-blue-800 transition shadow-lg">
           ያግኙኝ
         </a>
       </nav>
@@ -28,11 +28,12 @@ export default function Home() {
               የህልምዎን ቤት <br /> በታማኝነት ያግኙ!
             </h1>
             <p className="text-xl text-blue-100 mb-10 max-w-lg">
-              እኔ አማረ ክፍሌ (AK Property) እባላለሁ። ከአዲስ አበባ ታላላቅ ሪል እስቴቶች ጋር በመሆን፣ ለፍላጎትዎ የሚስማማውን ምርጥ ቤት በታማኝነት እና በቅንነት አቀርብልዎታለሁ።
+                                          (AK Property)
+               ከአዲስ አበባ ታላላቅ ሪል እስቴቶች ጋር በመሆን፣ ለፍላጎትዎ የሚስማማውን ምርጥ ቤት በታማኝነት እና በቅንነት አቀርብልዎታለሁ።
             </p>
             <div className="flex flex-wrap gap-4">
-              <a href="tel:+251923273175" className="bg-white text-blue-900 px-8 py-4 rounded-xl font-black text-lg shadow-2xl hover:scale-105 transition inline-block">
-                አሁኑኑ ይደውሉ
+              <a href="tel:+251913739983" className="bg-white text-blue-900 px-8 py-4 rounded-xl font-black text-lg shadow-2xl hover:scale-105 transition inline-block">
+                CALL NOW
               </a>
             </div>
           </div>
@@ -195,12 +196,12 @@ export default function Home() {
       <footer className="bg-blue-900 text-white py-16 px-10 text-center">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold mb-6 italic">AK PROPERTY</h2>
-          <p className="text-blue-200 mb-4">አዲስ አበባ፣ ኢትዮጵያ</p>
+          <p className="text-blue-200 mb-4">ADDIS ABABA፣ ETHIOPIA</p>
           <p className="text-blue-100 mb-8 font-mono">ስልክ፦ +251 923273175 / +251 913739983</p>
           <div className="flex justify-center space-x-8 mb-10">
             <a href="https://t.me/PropertiesInEthiopia" className="font-bold hover:text-blue-400">Telegram</a>
-            <a href="https://wa.me/251923273175" className="font-bold hover:text-blue-400">WhatsApp</a>
-            <a href="#" className="font-bold hover:text-blue-400">Facebook</a>
+            <a href="https://wa.me/251913739983" className="font-bold hover:text-blue-400">WhatsApp</a>
+            <a href="https://www.facebook.com/share/1GUgX8AZCv/" className="font-bold hover:text-blue-400">Facebook</a>
           </div>
           <p className="text-sm opacity-40">© 2026 AK PROPERTY. All rights reserved.</p>
         </div>
