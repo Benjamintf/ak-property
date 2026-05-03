@@ -102,7 +102,7 @@ export default function Home() {
               <img src="/me.jpg" alt="Tesfaye Kifle" className="w-full h-full object-cover scale-105 group-hover:scale-100 transition duration-700" />
               <div className="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/80 to-transparent text-left">
                 <p className="text-xs font-black text-blue-400 uppercase tracking-widest mb-1">Founder & CEO</p>
-                <h3 className="text-2xl font-black uppercase">Tesfaye Kifle Abera</h3>
+                <h3 className="text-2xl font-black uppercase">AMARE Kifle Abera</h3>
               </div>
             </div>
           </div>
