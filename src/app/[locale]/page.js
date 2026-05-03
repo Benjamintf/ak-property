@@ -19,16 +19,19 @@ export default function Home() {
           <a href="#projects" className="hover:text-blue-600 transition text-blue-900">{t('navProjects')}</a>
           <a href="#about" className="hover:text-blue-600 transition text-blue-900">{t('navAbout')}</a>
         </div>
-       <a href="https://wa.me/251913739983" className="bg-blue-600 text-white px-6 py-2 rounded-full font-bold hover:bg-blue-800 transition shadow-lg">
-          {t('contactBtn')}
-        </a>
-        
-        {/* የቋንቋ መቀያየሪያ - ከContact Btn ጎን እንዲሆን */}
-        <div className="flex space-x-3 items-center ml-4 border-l pl-4 border-gray-200">
-          <a href="/am" className="text-xs font-bold text-blue-900 hover:text-blue-500 transition">አማርኛ</a>
-          <span className="text-gray-300">|</span>
-          <a href="/en" className="text-xs font-bold text-blue-900 hover:text-blue-500 transition">EN</a>
-        </div></nav>
+        <div className="flex items-center">
+          <a href="https://wa.me/251913739983" className="bg-blue-600 text-white px-6 py-2 rounded-full font-bold hover:bg-blue-800 transition shadow-lg">
+            {t('contactBtn')}
+          </a>
+          
+          {/* የቋንቋ መቀያየሪያ */}
+          <div className="flex space-x-3 items-center ml-4 border-l pl-4 border-gray-200">
+            <a href="/am" className="text-xs font-bold text-blue-900 hover:text-blue-500 transition">አማርኛ</a>
+            <span className="text-gray-300">|</span>
+            <a href="/en" className="text-xs font-bold text-blue-900 hover:text-blue-500 transition">EN</a>
+          </div>
+        </div>
+      </nav>
 
       {/* 2. Hero Section */}
       <section id="about" className="relative py-24 px-10 bg-gradient-to-br from-blue-900 to-blue-700 text-white overflow-hidden">
@@ -64,7 +67,7 @@ export default function Home() {
 
       {/* Search Bar */}
       <div className="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-2xl -mt-10 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
           <div className="flex flex-col">
             <label className="text-sm font-semibold text-gray-600 mb-1">{t('searchLocation')}</label>
             <input type="text" placeholder="e.g., BOLE" className="border p-2 rounded-lg outline-none focus:border-blue-500" />
@@ -84,16 +87,16 @@ export default function Home() {
               <option>{t('price2')}</option>
               <option>{t('price3')}</option>
             </select>
-            <button 
-          onClick={() => {
-            const locale = window.location.pathname.split('/')[1] || 'en';
-            router.push(`/${locale}/properties`);
-          }}
-          className="bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition"
-        >
-          {t('search_button')}
-        </button>
           </div>
+          <button 
+            onClick={() => {
+              const locale = window.location.pathname.split('/')[1] || 'en';
+              router.push(`/${locale}/properties`);
+            }}
+            className="bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition h-[42px]"
+          >
+            {t('search_button')}
+          </button>
         </div>
       </div>
 
@@ -194,12 +197,11 @@ export default function Home() {
           <div className="flex justify-center space-x-8 mb-10">
             <a href="https://t.me/PropertiesInEthiopia" className="font-bold hover:text-blue-400">Telegram</a>
             <a href="https://wa.me/251913739983" className="font-bold hover:text-blue-400">WhatsApp</a>
-            <a href="https://www.facebook.com/share/1GUgX8AZCv/" className="font-bold hover:text-blue-400">Facebook</a>
+            <a href="https://www.facebook.com/profile.php?id=61553712802326" className="font-bold hover:text-blue-400">Facebook</a>
           </div>
           <p className="text-sm opacity-40">© 2026 AK PROPERTY. All rights reserved.</p>
         </div>
       </footer>
-
     </div>
   );
 }
