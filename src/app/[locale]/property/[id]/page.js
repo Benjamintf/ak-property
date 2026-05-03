@@ -10,8 +10,8 @@ const propertyData = {
       amenities: ["Spacious Garden", "Modern Kitchen", "Security System", "4 Car Parking"],
       images: {
         main: "/ayat_house.jpg",
-        map: "/location_map.jpg",
-        floorPlan: "/floor_plan.jpg"
+        map: "/ayat_map.jpg", // ለአያት የተለየ ካርታ
+        floorPlan: "/ayat_floor_plan.jpg" // ለአያት የተለየ ፕላን
       }
     },
     "bulgaria-house": {
@@ -21,8 +21,8 @@ const propertyData = {
       amenities: ["City View", "Elevator", "Backup Generator", "Gym Access"],
       images: {
         main: "/bulgariya_house1.jpg",
-        map: "/location_map.jpg",
-        floorPlan: "/floor_plan.jpg"
+        map: "/bulgaria_map.jpg", // ለቡልጋሪያ የተለየ ካርታ
+        floorPlan: "/bulgaria_floor_plan.jpg" // ለቡልጋሪያ የተለየ ፕላን
       }
     },
     "piassa-house": {
@@ -32,8 +32,8 @@ const propertyData = {
       amenities: ["Main Road Access", "High Visibility", "Ample Parking", "Modern Lift"],
       images: {
         main: "/piyassa_house.jpg",
-        map: "/location_map.jpg",
-        floorPlan: "/floor_plan.jpg"
+        map: "/piassa_map.jpg", // ለፒያሳ የተለየ ካርታ
+        floorPlan: "/piassa_floor_plan.jpg" // ለፒያሳ የተለየ ፕላን
       }
     }
   },
@@ -45,8 +45,8 @@ const propertyData = {
       amenities: ["ሰፊ ግቢ", "ዘመናዊ ወጥ ቤት", "አስተማማኝ ጥበቃ", "4 መኪና ማቆሚያ"],
       images: {
         main: "/ayat_house.jpg",
-        map: "/location_map.jpg",
-        floorPlan: "/floor_plan.jpg"
+        map: "/ayat_map.jpg",
+        floorPlan: "/ayat_floor_plan.jpg"
       }
     },
     "bulgaria-house": {
@@ -56,8 +56,8 @@ const propertyData = {
       amenities: ["የከተማ እይታ", "አሳንሰር", "ተጠባባቂ ጄኔሬተር", "ጂም ያለው"],
       images: {
         main: "/bulgariya_house1.jpg",
-        map: "/location_map.jpg",
-        floorPlan: "/floor_plan.jpg"
+        map: "/bulgaria_map.jpg",
+        floorPlan: "/bulgaria_floor_plan.jpg"
       }
     },
     "piassa-house": {
@@ -67,8 +67,8 @@ const propertyData = {
       amenities: ["ዋና መንገድ ላይ", "በቀላሉ የሚታይ", "ሰፊ የመኪና ማቆሚያ", "ዘመናዊ ሊፍት"],
       images: {
         main: "/piyassa_house.jpg",
-        map: "/location_map.jpg",
-        floorPlan: "/floor_plan.jpg"
+        map: "/piassa_map.jpg",
+        floorPlan: "/piassa_floor_plan.jpg"
       }
     }
   }
@@ -82,17 +82,10 @@ export default function PropertyDetails({ params }) {
   const data = propertyData[locale] || propertyData["en"];
   const house = data[id];
 
-  if (!house) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <h1 className="text-2xl font-bold">Property Not Found!</h1>
-      </div>
-    );
-  }
+  if (!house) return <div className="p-20 text-center font-bold">Property Not Found!</div>;
 
   return (
     <div className="bg-white min-h-screen font-sans pb-40">
-      {/* Header - ቋንቋ መቀያየሪያ */}
       <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b p-4 px-10 flex justify-between items-center shadow-sm">
         <a href={`/${locale}`} className="text-blue-900 font-black text-xl italic uppercase">AK PROPERTY</a>
         <div className="flex gap-6 items-center">
@@ -101,7 +94,6 @@ export default function PropertyDetails({ params }) {
         </div>
       </nav>
 
-      {/* Hero Section */}
       <div className="relative h-[65vh] mt-16 overflow-hidden">
         <img src={house.images.main} className="w-full h-full object-cover" alt="Main" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-12">
@@ -110,7 +102,6 @@ export default function PropertyDetails({ params }) {
         </div>
       </div>
 
-      {/* Info & Map Section */}
       <div className="max-w-7xl mx-auto py-24 px-8 grid lg:grid-cols-2 gap-20">
         <div className="flex flex-col justify-center">
           <span className="text-green-700 font-black uppercase tracking-[0.3em] text-xs mb-4">Location & Amenities</span>
@@ -128,38 +119,25 @@ export default function PropertyDetails({ params }) {
           </div>
         </div>
         
-        {/* Map - Image Rendering Fix */}
         <div className="relative h-[450px] rounded-[40px] overflow-hidden shadow-2xl border-8 border-white group">
-          <img 
-            src={house.images.map} 
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
-            alt="Map"
-            onError={(e) => { e.target.src = "https://via.placeholder.com/800x600?text=Map+Image+Not+Found+Check+Public+Folder"; }}
-          />
-          <div className="absolute top-6 right-6 bg-white/90 backdrop-blur px-6 py-2 rounded-full text-xs font-black shadow-lg">GOOGLE MAPS VIEW</div>
+          <img src={house.images.map} className="w-full h-full object-cover" alt="Map" />
+          <div className="absolute top-6 right-6 bg-white/90 backdrop-blur px-6 py-2 rounded-full text-xs font-black shadow-lg uppercase">Map View</div>
         </div>
       </div>
 
-      {/* Floor Plan Section */}
       <div className="bg-gray-100 py-24 border-y border-gray-200">
         <div className="max-w-5xl mx-auto px-8 text-center">
           <span className="text-green-700 font-black uppercase tracking-[0.3em] text-xs">Building Layout</span>
           <h2 className="text-4xl font-black text-blue-900 mt-4 mb-12 uppercase italic">Typical Floor Plan</h2>
           <div className="bg-white p-12 rounded-[60px] shadow-2xl inline-block w-full border border-gray-200">
-            <img 
-              src={house.images.floorPlan} 
-              className="w-full h-auto mx-auto" 
-              alt="Floor Plan"
-              onError={(e) => { e.target.src = "https://via.placeholder.com/1000x800?text=Floor+Plan+Not+Found+Check+Public+Folder"; }}
-            />
+            <img src={house.images.floorPlan} className="w-full h-auto mx-auto" alt="Floor Plan" />
           </div>
         </div>
       </div>
 
-      {/* Action Buttons */}
       <div className="fixed bottom-10 left-1/2 -translate-x-1/2 flex gap-4 w-[90%] max-w-md z-50">
-        <a href="https://wa.me/251913739983" className="flex-1 bg-[#25D366] text-white py-5 rounded-[20px] font-black text-center shadow-2xl hover:scale-105 transition active:scale-95 tracking-widest">WHATSAPP</a>
-        <a href="tel:+251913739983" className="flex-1 bg-blue-900 text-white py-5 rounded-[20px] font-black text-center shadow-2xl hover:scale-105 transition active:scale-95 tracking-widest">CALL NOW</a>
+        <a href="https://wa.me/251913739983" className="flex-1 bg-[#25D366] text-white py-5 rounded-[20px] font-black text-center shadow-2xl hover:scale-105 transition active:scale-95 tracking-widest uppercase">Whatsapp</a>
+        <a href="tel:+251913739983" className="flex-1 bg-blue-900 text-white py-5 rounded-[20px] font-black text-center shadow-2xl hover:scale-105 transition active:scale-95 tracking-widest uppercase">Call Now</a>
       </div>
     </div>
   );
