@@ -2,11 +2,13 @@
 
 import React from 'react';
 import { useTranslations } from 'next-intl';
-
+import { useRouter } from 'next-intl/navigation';
 export default function Home() {
   const t = useTranslations('HomePage');
+  const router = useRouter(); // ይሄ አሁን ትክክል ነው
 
   return (
+    // የተቀረው ኮድ እዚህ ይቀጥላል...return (
     <div className="min-h-screen bg-white text-gray-800 font-sans">
       
       {/* 1. Header */}
@@ -83,10 +85,11 @@ export default function Home() {
               <option>{t('price2')}</option>
               <option>{t('price3')}</option>
             </select>
-          </div>
-          <div className="flex items-end">
-            <button className="w-full bg-blue-600 text-white p-2 rounded-lg font-bold hover:bg-blue-700 transition">
-              {t('searchBtn')}
+            <button 
+                  onClick={() => router.push('/properties')}
+                     className="bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition"
+                        >
+                    {t('search_button')}
             </button>
           </div>
         </div>
