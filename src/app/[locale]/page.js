@@ -3,16 +3,15 @@
 import React from 'react';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
+
 export default function Home() {
   const t = useTranslations('HomePage');
-  const router = useRouter(); // ይሄ አሁን ትክክል ነው
+  const router = useRouter();
 
   return (
-    // የተቀረው ኮድ እዚህ ይቀጥላል...return (
     <div className="min-h-screen bg-white text-gray-800 font-sans">
-      
       {/* 1. Header */}
-      <nav className="flex justify-between items-center py-5 px-10 border-b sticky top-0 bg-white/80 backdrop-blur-md z-50">
+      <nav className="flex justify-between items-center py-5 px-10 border-b">
         <div className="text-3xl font-black text-blue-900 tracking-tighter">
           AK <span className="text-blue-500 font-light text-2xl">PROPERTY</span>
         </div>
@@ -85,16 +84,15 @@ export default function Home() {
               <option>{t('price2')}</option>
               <option>{t('price3')}</option>
             </select>
-            // እንዲህ ቀይረው፦
-<button 
-  onClick={() => {
-    const locale = window.location.pathname.split('/')[1] || 'en';
-    router.push(`/${locale}/properties`);
-  }}
-  className="..."
->
-  {t('search_button')}
-</button>
+            <button 
+          onClick={() => {
+            const locale = window.location.pathname.split('/')[1] || 'en';
+            router.push(`/${locale}/properties`);
+          }}
+          className="bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition"
+        >
+          {t('search_button')}
+        </button>
           </div>
         </div>
       </div>
