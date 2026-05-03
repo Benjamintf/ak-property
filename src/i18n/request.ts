@@ -5,11 +5,11 @@ import {getRequestConfig} from 'next-intl/server';
 const locales = ['en', 'am'];
 
 export default getRequestConfig(async ({locale}) => {
-  // የቀረበው ቋንቋ በዝርዝሩ ውስጥ ካለ አረጋግጥ
+  // የቀረበው ቋንቋ በዝርዝሩ ውስጥ ካለ ያረጋግጣል
   if (!locales.includes(locale as any)) notFound();
 
   return {
-    // ማሳሰቢያ፡ የ 'messages' ፎልደር ከ 'src' ውጭ ከሆነ '../' ተጠቀም
-messages: (await import(`../../messages/${locale}.json`)).default
+    // የ 'messages' ፎልደር ከ 'src' ውጭ ስለሆነ ሁለት ደረጃ ወደ ኋላ (../../) ይሄዳል
+    messages: (await import(`../../messages/${locale}.json`)).default
   };
 });
