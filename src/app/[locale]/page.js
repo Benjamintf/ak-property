@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { useRouter, useParams } from 'next/navigation';
-import { MessageCircle, Send, Facebook as FacebookIcon, Phone, Search, MapPin, Home as HomeIcon, Tag } from 'lucide-react';
+import { MessageCircle, Send, FacebookIcon, Phone, Search, MapPin, Home as HomeIcon, Tag } from 'lucide-react';
 
 export default function Home() {
   const t = useTranslations('HomePage');
