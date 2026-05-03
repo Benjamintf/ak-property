@@ -8,6 +8,14 @@ export default function Home() {
   const t = useTranslations('HomePage');
   const router = useRouter();
 
+  // የቋንቋውን ስም ለማግኘት (ለምሳሌ 'en' ወይም 'am')
+  const getLocale = () => {
+    if (typeof window !== 'undefined') {
+      return window.location.pathname.split('/')[1] || 'en';
+    }
+    return 'en';
+  };
+
   return (
     <div className="min-h-screen bg-white text-gray-800 font-sans">
       {/* 1. Header */}
@@ -88,9 +96,8 @@ export default function Home() {
               <option>{t('price3')}</option>
             </select>
           </div>
-           <button 
+          <button 
             onClick={() => {
-              // ይህ ኮድ ገጹን ወደ ታች 'projects' ወደሚለው ክፍል ዝቅ ያደርገዋል
               document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
             }}
             className="bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition h-[42px]"
@@ -148,7 +155,12 @@ export default function Home() {
                 <p className="text-gray-500 text-sm mb-4">📍 {t('house1Loc')}</p>
                 <div className="flex justify-between items-center pt-4 border-t border-gray-100">
                   <span className="text-blue-600 font-black text-xl">{t('house1Price')}</span>
-                  <button className="bg-blue-50 text-blue-600 px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-600 hover:text-white transition">{t('moreBtn')}</button>
+                  <button 
+                    onClick={() => router.push(`/${getLocale()}/property/ayat-house`)}
+                    className="bg-blue-50 text-blue-600 px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-600 hover:text-white transition"
+                  >
+                    {t('moreBtn')}
+                  </button>
                 </div>
               </div>
             </div>
@@ -164,7 +176,12 @@ export default function Home() {
                 <p className="text-gray-500 text-sm mb-4">📍 {t('house2Loc')}</p>
                 <div className="flex justify-between items-center pt-4 border-t border-gray-100">
                   <span className="text-blue-600 font-black text-xl">{t('house2Price')}</span>
-                  <button className="bg-blue-50 text-blue-600 px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-600 hover:text-white transition">{t('moreBtn')}</button>
+                  <button 
+                    onClick={() => router.push(`/${getLocale()}/property/bulgaria-house`)}
+                    className="bg-blue-50 text-blue-600 px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-600 hover:text-white transition"
+                  >
+                    {t('moreBtn')}
+                  </button>
                 </div>
               </div>
             </div>
@@ -180,7 +197,12 @@ export default function Home() {
                 <p className="text-gray-500 text-sm mb-4">📍 {t('house3Loc')}</p>
                 <div className="flex justify-between items-center pt-4 border-t border-gray-100">
                   <span className="text-blue-600 font-black text-xl">{t('house3Price')}</span>
-                  <button className="bg-blue-50 text-blue-600 px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-600 hover:text-white transition">{t('moreBtn')}</button>
+                  <button 
+                    onClick={() => router.push(`/${getLocale()}/property/piassa-house`)}
+                    className="bg-blue-50 text-blue-600 px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-600 hover:text-white transition"
+                  >
+                    {t('moreBtn')}
+                  </button>
                 </div>
               </div>
             </div>
