@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { useRouter, useParams } from 'next/navigation';
-import { MessageCircle, Send, Facebook, Phone, Search, MapPin, Home as HomeIcon, Tag } from 'lucide-react';
+import { MessageCircle, Send, Facebook as FacebookIcon, Phone, Search, MapPin, Home as HomeIcon, Tag } from 'lucide-react';
 
 export default function Home() {
   const t = useTranslations('HomePage');
@@ -223,7 +223,7 @@ export default function Home() {
               <div className="flex justify-center md:justify-start gap-6">
                 <SocialIcon href="https://t.me/PropertiesInEthiopia" icon={<Send size={20} />} label="Telegram" />
                 <SocialIcon href="https://wa.me/251913739983" icon={<MessageCircle size={20} />} label="WhatsApp" />
-                <SocialIcon href="https://www.facebook.com/profile.php?id=61553712802326" icon={<Facebook size={20} />} label="Facebook" />
+                <SocialIcon href="https://www.facebook.com/..." icon={<FacebookIcon size={20} />} label="Facebook" />
               </div>
             </div>
             
