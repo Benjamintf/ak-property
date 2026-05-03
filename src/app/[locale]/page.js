@@ -88,10 +88,10 @@ export default function Home() {
               <option>{t('price3')}</option>
             </select>
           </div>
-          <button 
+           <button 
             onClick={() => {
-              const locale = window.location.pathname.split('/')[1] || 'en';
-              router.push(`/${locale}/properties`);
+              // ይህ ኮድ ገጹን ወደ ታች 'projects' ወደሚለው ክፍል ዝቅ ያደርገዋል
+              document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
             }}
             className="bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition h-[42px]"
           >
