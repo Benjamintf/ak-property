@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import { motion } from 'framer-motion'; // አዲስ የተጨመረ
 import { useTranslations } from 'next-intl';
 import { useRouter, useParams } from 'next/navigation';
 import { MessageCircle, Send, Globe, Phone, Search, MapPin, Home as HomeIcon, Tag } from 'lucide-react';
@@ -22,7 +23,6 @@ export default function Home() {
     if (e) e.preventDefault();
     const locKey = filters.location.toLowerCase().trim();
     
-    // የፍለጋ አመክንዮ (Logic) - ቦታን መሰረት ያደረገ
     if (locKey.includes("ayat") || locKey.includes("አያት")) {
       router.push(`/${locale}/property/ayat-house`);
     } 
@@ -33,7 +33,6 @@ export default function Home() {
       router.push(`/${locale}/property/piassa-house`);
     } 
     else {
-      // ፍለጋው ካልተገኘ ወደ ፕሮጀክቶች ዝርዝር ዝቅ እንዲል
       document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
     }
   };
@@ -63,55 +62,98 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* --- HERO SECTION --- */}
-      <section className="relative pt-40 pb-28 px-6 bg-[#0a192f] text-white overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full blur-[120px]"></div>
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-blue-700 rounded-full blur-[150px]"></div>
+      {/* --- HERO SECTION (ቪዲዮ እና አኒሜሽን የተጨመረበት) --- */}
+      <section className="relative h-screen min-h-[700px] flex items-center overflow-hidden bg-slate-950 text-white">
+        {/* የቪዲዮ ባክግራውንድ */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover opacity-50"
+          >
+            <source src="/videos/hero-bg.mp4" type="video/mp4" />
+          </video>
+          {/* የግራዲየንት ጥላ */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/60 to-transparent"></div>
         </div>
         
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 relative z-10">
+        <div className="max-w-7xl mx-auto px-6 w-full flex flex-col lg:flex-row items-center gap-16 relative z-10">
           <div className="lg:w-1/2 text-center lg:text-left">
-            <div className="inline-block px-4 py-1.5 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 text-[10px] font-black uppercase tracking-[0.2em] mb-6">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="inline-block px-4 py-1.5 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 text-[10px] font-black uppercase tracking-[0.2em] mb-6"
+            >
               Premium Real Estate Addis Ababa
-            </div>
-            <h1 className="text-5xl md:text-8xl font-black mb-8 leading-[0.9] tracking-tighter">
+            </motion.div>
+            
+            <motion.h1 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-5xl md:text-8xl font-black mb-8 leading-[0.9] tracking-tighter"
+            >
               {t('heroTitleLine1')} <span className="text-blue-500 italic">{t('heroTitleLine2')}</span>
-            </h1>
-            <p className="text-lg md:text-xl text-gray-400 mb-12 max-w-xl leading-relaxed font-medium">
+            </motion.h1>
+
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.5 }}
+              className="text-lg md:text-xl text-gray-400 mb-12 max-w-xl leading-relaxed font-medium"
+            >
               "{t('heroSubtitle')}"
-            </p>
-            <div className="flex flex-wrap justify-center lg:justify-start gap-4">
+            </motion.p>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="flex flex-wrap justify-center lg:justify-start gap-4"
+            >
               <a href="tel:+251913739983" className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-5 rounded-2xl font-black text-lg transition-all hover:scale-105 shadow-xl shadow-blue-900/20 uppercase tracking-tighter">
                 {t('callNow')}
               </a>
               <div className="flex -space-x-3 items-center">
-                 <div className="w-12 h-12 rounded-full border-4 border-[#0a192f] bg-gray-300 overflow-hidden shadow-xl">
+                 <div className="w-12 h-12 rounded-full border-4 border-slate-900 bg-gray-300 overflow-hidden shadow-xl">
                     <img src="/me.jpg" className="w-full h-full object-cover" />
                  </div>
-                 <div className="bg-white/5 backdrop-blur-md border border-white/10 py-2 px-4 rounded-full text-[10px] font-bold">
+                 <div className="bg-white/5 backdrop-blur-md border border-white/10 py-2 px-4 rounded-full text-[10px] font-bold text-white">
                     Direct Agent Support
                  </div>
               </div>
-            </div>
+            </motion.div>
           </div>
           
-          <div className="lg:w-1/2 relative group">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
+            animate={{ opacity: 1, scale: 1, rotate: 3 }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="lg:w-1/2 relative group hidden lg:block"
+          >
             <div className="absolute -inset-4 bg-gradient-to-r from-blue-600 to-blue-400 rounded-[50px] opacity-20 blur-2xl group-hover:opacity-40 transition duration-1000"></div>
-            <div className="relative w-full aspect-[4/5] md:w-[450px] md:h-[550px] bg-white/5 rounded-[40px] border border-white/10 shadow-2xl overflow-hidden transform lg:rotate-3 hover:rotate-0 transition duration-700">
+            <div className="relative w-full aspect-[4/5] md:w-[450px] md:h-[550px] bg-white/5 rounded-[40px] border border-white/10 shadow-2xl overflow-hidden hover:rotate-0 transition duration-700">
               <img src="/me.jpg" alt="Tesfaye Kifle" className="w-full h-full object-cover scale-105 group-hover:scale-100 transition duration-700" />
               <div className="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/80 to-transparent text-left">
                 <p className="text-xs font-black text-blue-400 uppercase tracking-widest mb-1">Founder & CEO</p>
-                <h3 className="text-2xl font-black uppercase">AMARE Kifle Abera</h3>
+                <h3 className="text-2xl font-black uppercase">Tesfaye Kifle Abera</h3>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* --- ADVANCED SEARCH BAR --- */}
       <section className="px-6 -mt-16 relative z-30">
-        <div className="max-w-6xl mx-auto bg-white p-4 md:p-8 rounded-[35px] shadow-[0_30px_100px_rgba(0,0,0,0.12)] border border-gray-100">
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-6xl mx-auto bg-white p-4 md:p-8 rounded-[35px] shadow-[0_30px_100px_rgba(0,0,0,0.12)] border border-gray-100"
+        >
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 items-end">
             <div className="flex flex-col gap-2 p-3">
               <label className="flex items-center gap-2 text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">
@@ -161,7 +203,7 @@ export default function Home() {
               <Search size={20} /> {locale === 'am' ? 'ፈልግ' : 'SEARCH'}
             </button>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* --- PROJECTS LIST --- */}
@@ -178,7 +220,6 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {/* PROPERTY CARD - AYAT */}
             <PropertyCard 
               img="/ayat_house.jpg"
               title={t('house1Title')}
@@ -187,8 +228,6 @@ export default function Home() {
               btnText={t('moreBtn')}
               onClick={() => router.push(`/${locale}/property/ayat-house`)}
             />
-
-            {/* PROPERTY CARD - BULGARIA */}
             <PropertyCard 
               img="/bulgariya_house1.jpg"
               title={t('house2Title')}
@@ -197,8 +236,6 @@ export default function Home() {
               btnText={t('moreBtn')}
               onClick={() => router.push(`/${locale}/property/bulgaria-house`)}
             />
-
-            {/* PROPERTY CARD - PIASSA */}
             <PropertyCard 
               img="/piyassa_house.jpg"
               title={t('house3Title')}
@@ -223,7 +260,7 @@ export default function Home() {
               <div className="flex justify-center md:justify-start gap-6">
                 <SocialIcon href="https://t.me/PropertiesInEthiopia" icon={<Send size={20} />} label="Telegram" />
                 <SocialIcon href="https://wa.me/251913739983" icon={<MessageCircle size={20} />} label="WhatsApp" />
-                <SocialIcon href="https://www.facebook.com/..." icon={<Globe size={20} />} label="Facebook" />
+                <SocialIcon href="https://www.facebook.com/" icon={<Globe size={20} />} label="Facebook" />
               </div>
             </div>
             
@@ -266,7 +303,14 @@ export default function Home() {
 
 function PropertyCard({ img, title, loc, price, btnText, onClick }) {
   return (
-    <div className="group bg-white rounded-[40px] border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.12)] transition-all duration-700 overflow-hidden cursor-pointer" onClick={onClick}>
+    <motion.div 
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      whileHover={{ y: -10 }}
+      className="group bg-white rounded-[40px] border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.12)] transition-all duration-700 overflow-hidden cursor-pointer" 
+      onClick={onClick}
+    >
       <div className="h-[340px] relative overflow-hidden p-4">
         <div className="absolute top-8 left-8 z-10 bg-blue-600 text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-xl italic">FOR SALE</div>
         <img src={img} alt={title} className="w-full h-full object-cover rounded-[32px] group-hover:scale-110 transition duration-1000" />
@@ -287,7 +331,7 @@ function PropertyCard({ img, title, loc, price, btnText, onClick }) {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
