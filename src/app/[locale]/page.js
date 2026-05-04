@@ -185,7 +185,7 @@ export default function Home() {
               </div>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center"><Send size={20}/></div>
-                <span className="text-xl font-bold">info@akproperties.com</span>
+                <span className="text-xl font-bold">infohttps://t.me/PropertiesInEthiopia</span>
               </div>
             </div>
           </div>
