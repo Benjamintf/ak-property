@@ -6,8 +6,14 @@ import { useTranslations } from 'next-intl';
 import { useRouter, useParams } from 'next/navigation';
 import { 
   MessageCircle, Send, Globe, Phone, Search, MapPin, 
-  Home as HomeIcon, Tag, ShieldCheck, Star, Facebook 
+  Home as Homeicon, Tag, ShieldCheck, Star
 } from 'lucide-react';
+
+// Animation settings
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+};
 
 export default function Home() {
   const t = useTranslations('HomePage');
@@ -21,7 +27,15 @@ export default function Home() {
     price: t('price1')
   });
 
-  // የመፈለጊያ አመክንዮ (Search Logic)
+  // Form State
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    message: ""
+  });
+
+  // Search Logic
   const handleSearch = (e) => {
     if (e) e.preventDefault();
     const locKey = filters.location.toLowerCase().trim();
@@ -33,9 +47,16 @@ export default function Home() {
     } else if (locKey.includes("piassa") || locKey.includes("ፒያሳ")) {
       router.push(`/${locale}/property/piassa-house`);
     } else {
-      // ቦታው ካልተገኘ ወደ ፕሮጀክቶች ዝርዝር ዝቅ እንዲል ያደርጋል
       document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  // Email Send Function
+  const handleEmailSend = (e) => {
+    e.preventDefault();
+    const subject = `New Inquiry: ${formData.firstName} ${formData.lastName}`;
+    const body = `Name: ${formData.firstName} ${formData.lastName}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
+    window.location.href = `mailto:amarekifle97@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   return (
@@ -56,16 +77,16 @@ export default function Home() {
           </div>
 
           <div className="flex bg-gray-100 p-1 rounded-full border border-gray-200">
-            <button onClick={() => router.push('/am')} className={`px-4 py-1.5 text-[10px] font-black rounded-full transition-all ${locale === 'am' ? 'bg-blue-600 text-white shadow-md' : 'text-gray-500 hover:text-blue-600'}`}>አማርኛ</button>
-            <button onClick={() => router.push('/en')} className={`px-4 py-1.5 text-[10px] font-black rounded-full transition-all ${locale === 'en' ? 'bg-blue-600 text-white shadow-md' : 'text-gray-500 hover:text-blue-600'}`}>EN</button>
+            <button onClick={() => router.push('/am')} className={`px-4 py-1.5 text-[10px] font-black rounded-full transition-all ${locale === 'am' ? 'bg-blue-600 text-white shadow-md' : 'text-gray-500'}`}>አማርኛ</button>
+            <button onClick={() => router.push('/en')} className={`px-4 py-1.5 text-[10px] font-black rounded-full transition-all ${locale === 'en' ? 'bg-blue-600 text-white shadow-md' : 'text-gray-500'}`}>EN</button>
           </div>
         </div>
       </nav>
 
       {/* --- HERO SECTION --- */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-40 overflow-hidden bg-slate-950 text-white">
-        <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center gap-16">
-          <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} className="lg:w-1/2 text-center lg:text-left">
+        <motion.div initial="hidden" animate="visible" variants={fadeInUp} className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center gap-16">
+          <div className="lg:w-1/2 text-center lg:text-left">
             <span className="inline-block px-4 py-1.5 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 text-[10px] font-black uppercase tracking-[0.2em] mb-8">
               {locale === 'am' ? 'ፕሪሚየም ሪል እስቴት አዲስ አበባ' : 'Premium Real Estate Addis Ababa'}
             </span>
@@ -73,32 +94,28 @@ export default function Home() {
               {t('heroTitleLine1')} <br/> 
               <span className="text-blue-500 italic">{t('heroTitleLine2')}</span>
             </h1>
-            <p className="text-lg md:text-xl text-gray-400 mb-12 max-w-xl font-medium italic">
-              "{t('heroSubtitle')}"
-            </p>
-            <div className="flex flex-wrap justify-center lg:justify-start gap-6">
-              <a href="tel:+251913739983" className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-5 rounded-2xl font-black text-lg transition-all hover:scale-105 shadow-xl shadow-blue-900/40 uppercase tracking-tighter">
-                {t('callNow')}
-              </a>
-            </div>
-          </motion.div>
+            <p className="text-lg md:text-xl text-gray-400 mb-12 max-w-xl font-medium italic italic">"{t('heroSubtitle')}"</p>
+            <a href="tel:+251913739983" className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-5 rounded-2xl font-black text-lg transition-all hover:scale-105 shadow-xl shadow-blue-900/40 uppercase tracking-tighter inline-block">
+              {t('callNow')}
+            </a>
+          </div>
           
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="lg:w-1/2 relative">
+          <div className="lg:w-1/2 relative">
             <div className="relative w-full aspect-[4/5] md:w-[450px] md:h-[550px] mx-auto bg-slate-900 rounded-[60px] border border-white/10 shadow-2xl overflow-hidden group">
-              <img src="/me.jpg" alt="Tesfaye Kifle" className="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-1000" />
+              <img src="/me.jpg" alt="amare Kifle" className="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-1000" />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
               <div className="absolute bottom-10 left-10">
                 <p className="text-blue-400 font-black text-xs uppercase tracking-[0.3em] mb-2">Founder & CEO</p>
-                <h3 className="text-3xl font-black uppercase tracking-tighter">AMARE Kifle Abera</h3>
+                <h3 className="text-3xl font-black uppercase tracking-tighter text-white">amare Kifle Abera</h3>
               </div>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </section>
 
       {/* --- ADVANCED SEARCH --- */}
       <section className="px-6 -mt-20 relative z-30">
-        <motion.div initial={{ y: 50, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} className="max-w-6xl mx-auto bg-white p-6 md:p-10 rounded-[40px] shadow-2xl border border-gray-100">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="max-w-6xl mx-auto bg-white p-6 md:p-10 rounded-[40px] shadow-2xl border border-gray-100">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-end">
             <div className="flex flex-col gap-3">
               <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">{t('searchLocation')}</label>
@@ -133,7 +150,7 @@ export default function Home() {
 
       {/* --- WHY CHOOSE US --- */}
       <section id="about" className="py-32 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
             <h2 className="text-5xl md:text-7xl font-black text-blue-950 uppercase italic tracking-tighter">
               {locale === 'am' ? 'ለምን እኛን ይመርጣሉ?' : 'Why Choose Us'}
@@ -145,35 +162,26 @@ export default function Home() {
             <FeatureCard icon={<ShieldCheck/>} title={locale === 'am' ? 'ህጋዊ ዋስትና' : 'Secure Assets'} desc="100% legal and structural verification." />
             <FeatureCard icon={<Star/>} title={locale === 'am' ? 'ምርጥ አገልግሎት' : 'Expert Guidance'} desc="Professional support from start to finish." />
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* --- PROJECTS --- */}
       <section id="projects" className="py-32 px-6 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeInUp} className="max-w-7xl mx-auto">
           <h2 className="text-5xl md:text-7xl font-black text-blue-950 uppercase italic tracking-tighter mb-20">
             {t('projectsTitle')}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <PropertyCard 
-              img="/ayat_house.jpg" title={t('house1Title')} loc={t('house1Loc')} price={t('house1Price')} 
-              onClick={() => router.push(`/${locale}/property/ayat-house`)} 
-            />
-            <PropertyCard 
-              img="/bulgariya_house1.jpg" title={t('house2Title')} loc={t('house2Loc')} price={t('house2Price')} 
-              onClick={() => router.push(`/${locale}/property/bulgaria-house`)} 
-            />
-            <PropertyCard 
-              img="/piyassa_house.jpg" title={t('house3Title')} loc={t('house3Loc')} price={t('house3Price')} 
-              onClick={() => router.push(`/${locale}/property/piassa-house`)} 
-            />
+            <PropertyCard img="/ayat_house.jpg" title={t('house1Title')} loc={t('house1Loc')} price={t('house1Price')} onClick={() => router.push(`/${locale}/property/ayat-house`)} />
+            <PropertyCard img="/bulgariya_house1.jpg" title={t('house2Title')} loc={t('house2Loc')} price={t('house2Price')} onClick={() => router.push(`/${locale}/property/bulgaria-house`)} />
+            <PropertyCard img="/piyassa_house.jpg" title={t('house3Title')} loc={t('house3Loc')} price={t('house3Price')} onClick={() => router.push(`/${locale}/property/piassa-house`)} />
           </div>
-        </div>
+        </motion.div>
       </section>
 
-      {/* --- CONTACT --- */}
+      {/* --- CONTACT & EMAIL FORM --- */}
       <section id="contact" className="py-32 bg-blue-950 text-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row gap-20">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row gap-20">
           <div className="lg:w-1/2">
             <h2 className="text-6xl md:text-8xl font-black mb-10 tracking-tighter uppercase italic leading-[0.8]">
               READY TO <br/> <span className="text-blue-500">MOVE IN?</span>
@@ -185,44 +193,42 @@ export default function Home() {
               </div>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center"><Send size={20}/></div>
-                <span className="text-xl font-bold">infohttps://t.me/PropertiesInEthiopia</span>
+                <span className="text-xl font-bold">info@akproperties.com</span>
               </div>
             </div>
           </div>
 
           <div className="lg:w-1/2">
-            <motion.div whileInView={{ opacity: 1, scale: 1 }} initial={{ opacity: 0, scale: 0.9 }} className="bg-white p-10 rounded-[40px]">
-              <form className="space-y-4">
+            <div className="bg-white p-10 rounded-[40px]">
+              <form onSubmit={handleEmailSend} className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
-                  <input placeholder="First Name" className="w-full bg-gray-100 p-5 rounded-2xl outline-none text-gray-900 font-bold" />
-                  <input placeholder="Last Name" className="w-full bg-gray-100 p-5 rounded-2xl outline-none text-gray-900 font-bold" />
+                  <input required placeholder="First Name" className="w-full bg-gray-100 p-5 rounded-2xl outline-none text-gray-900 font-bold" value={formData.firstName} onChange={(e) => setFormData({...formData, firstName: e.target.value})} />
+                  <input required placeholder="Last Name" className="w-full bg-gray-100 p-5 rounded-2xl outline-none text-gray-900 font-bold" value={formData.lastName} onChange={(e) => setFormData({...formData, lastName: e.target.value})} />
                 </div>
-                <input placeholder="Email" className="w-full bg-gray-100 p-5 rounded-2xl outline-none text-gray-900 font-bold" />
-                <textarea placeholder="Message" rows="4" className="w-full bg-gray-100 p-5 rounded-2xl outline-none text-gray-900 font-bold"></textarea>
-                <button className="w-full bg-blue-600 text-white py-5 rounded-2xl font-black text-lg hover:bg-blue-700 transition-all uppercase tracking-widest shadow-xl shadow-blue-200">
+                <input required type="email" placeholder="Email" className="w-full bg-gray-100 p-5 rounded-2xl outline-none text-gray-900 font-bold" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} />
+                <textarea required placeholder="Message" rows="4" className="w-full bg-gray-100 p-5 rounded-2xl outline-none text-gray-900 font-bold" value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})}></textarea>
+                <button type="submit" className="w-full bg-blue-600 text-white py-5 rounded-2xl font-black text-lg hover:bg-blue-700 transition-all uppercase tracking-widest shadow-xl">
                   {locale === 'am' ? 'መልዕክት ላክ' : 'Send Message'}
                 </button>
               </form>
-            </motion.div>
+            </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* --- FOOTER --- */}
       <footer className="bg-slate-950 text-white pt-24 pb-12 px-6 border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-20">
-            {/* አጭር መግለጫ */}
             <div className="col-span-1">
-              <h2 className="text-2xl font-black tracking-tighter mb-4">AK PROPERTY</h2>
+              <h2 className="text-2xl font-black tracking-tighter mb-4 uppercase">AK PROPERTY</h2>
               <p className="text-gray-500 text-sm font-medium leading-relaxed max-w-sm">
                 {locale === 'am' 
-                  ? 'በአዲስ አበባ ውስጥ ዘመናዊ እና ምቹ የመኖሪያ ቤቶችን ለደንበኞቻችን በታማኝነት እናቀርባለን። የእርስዎ ህልም ቤት የእኛ ቅድሚያ የሚሰጠው ጉዳይ ነው።' 
-                  : 'We provide modern and comfortable residential homes in Addis Ababa with integrity. Your dream home is our top priority.'}
+                  ? 'በአዲስ አበባ ውስጥ ዘመናዊ እና ምቹ የመኖሪያ ቤቶችን ለደንበኞቻችን በታማኝነት እናቀርባለን።' 
+                  : 'We provide modern and comfortable residential homes in Addis Ababa with integrity.'}
               </p>
             </div>
 
-            {/* ሊንኮች */}
             <div className="flex flex-col gap-4">
               <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500 mb-2">Navigation</h4>
               <ul className="text-xs font-bold text-gray-400 space-y-3 uppercase tracking-widest">
@@ -232,7 +238,6 @@ export default function Home() {
               </ul>
             </div>
 
-            {/* ሶሻል ሚዲያ */}
             <div className="flex flex-col gap-6 items-start md:items-end">
               <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500">Follow Us</h4>
               <div className="flex gap-4">
@@ -243,17 +248,15 @@ export default function Home() {
             </div>
           </div>
 
-          {/* የታችኛው መስመር (The Professional Bottom Line) */}
-          <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-center">
             <p className="text-[9px] uppercase font-black tracking-[0.4em] text-gray-600">
               © 2026 AK PROPERTY. All Rights Reserved.
             </p>
             
-            {/* ይሄ ክፍል ፕሮፌሽናል ያደርገዋል */}
             <div className="flex items-center gap-2">
               <span className="h-px w-8 bg-blue-600/30"></span>
               <p className="text-[9px] uppercase font-black tracking-[0.2em] text-gray-500">
-                Developed by <span className="text-blue-500">Amare Kifle Abera</span>
+                Developed by <span className="text-blue-500">amare Kifle Abera</span>
               </p>
               <span className="h-px w-8 bg-blue-600/30"></span>
             </div>
@@ -302,7 +305,7 @@ function PropertyCard({ img, title, loc, price, onClick }) {
 
 function SocialIcon({ href, icon }) {
   return (
-    <a href={href} target="_blank" className="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center hover:bg-blue-600 transition-all">
+    <a href={href} target="_blank" className="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center hover:bg-blue-600 transition-all text-white">
       {icon}
     </a>
   );
