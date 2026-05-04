@@ -219,7 +219,7 @@ export default function Home() {
           <div className="flex gap-6">
             <SocialIcon href="https://t.me/PropertiesInEthiopia" icon={<Send size={24} />} />
             <SocialIcon href="https://wa.me/251913739983" icon={<MessageCircle size={24} />} />
-            <SocialIcon href="#" icon={<Facebook size={24} />} />
+            <SocialIcon href="#" icon={<Globe size={24} />} />
           </div>
         </div>
         <div className="text-center mt-20 opacity-30 text-[10px] font-black uppercase tracking-[0.5em]">
