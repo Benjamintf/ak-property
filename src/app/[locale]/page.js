@@ -238,7 +238,7 @@ export default function Home() {
               <div className="flex gap-4">
                 <SocialIcon href="https://t.me/PropertiesInEthiopia" icon={<Send size={20} />} />
                 <SocialIcon href="https://wa.me/251913739983" icon={<MessageCircle size={20} />} />
-                <SocialIcon href="#" icon={<Globe size={20} />} />
+                <SocialIcon href="https://www.facebook.com/profile.php?id=61553712802326" icon={<Globe size={20} />} />
               </div>
             </div>
           </div>
@@ -253,7 +253,7 @@ export default function Home() {
             <div className="flex items-center gap-2">
               <span className="h-px w-8 bg-blue-600/30"></span>
               <p className="text-[9px] uppercase font-black tracking-[0.2em] text-gray-500">
-                Developed by <span className="text-blue-500">Tesfaye Kifle Abera</span>
+                Developed by <span className="text-blue-500">Amare Kifle Abera</span>
               </p>
               <span className="h-px w-8 bg-blue-600/30"></span>
             </div>
