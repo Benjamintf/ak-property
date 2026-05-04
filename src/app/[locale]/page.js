@@ -209,23 +209,62 @@ export default function Home() {
       </section>
 
       {/* --- FOOTER --- */}
-      <footer className="bg-slate-950 text-white py-20 px-10 border-t border-white/5">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
-          <div>
-            <h2 className="text-3xl font-black tracking-tighter">AK PROPERTY</h2>
-            <p className="text-gray-500 mt-2 font-black text-[10px] tracking-[0.3em] uppercase">Excellence in Realty</p>
+      <footer className="bg-slate-950 text-white pt-24 pb-12 px-6 border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-20">
+            {/* አጭር መግለጫ */}
+            <div className="col-span-1">
+              <h2 className="text-2xl font-black tracking-tighter mb-4">AK PROPERTY</h2>
+              <p className="text-gray-500 text-sm font-medium leading-relaxed max-w-sm">
+                {locale === 'am' 
+                  ? 'በአዲስ አበባ ውስጥ ዘመናዊ እና ምቹ የመኖሪያ ቤቶችን ለደንበኞቻችን በታማኝነት እናቀርባለን። የእርስዎ ህልም ቤት የእኛ ቅድሚያ የሚሰጠው ጉዳይ ነው።' 
+                  : 'We provide modern and comfortable residential homes in Addis Ababa with integrity. Your dream home is our top priority.'}
+              </p>
+            </div>
+
+            {/* ሊንኮች */}
+            <div className="flex flex-col gap-4">
+              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500 mb-2">Navigation</h4>
+              <ul className="text-xs font-bold text-gray-400 space-y-3 uppercase tracking-widest">
+                <li><a href="#projects" className="hover:text-blue-500 transition">Properties</a></li>
+                <li><a href="#about" className="hover:text-blue-500 transition">About Us</a></li>
+                <li><a href="#contact" className="hover:text-blue-500 transition">Contact</a></li>
+              </ul>
+            </div>
+
+            {/* ሶሻል ሚዲያ */}
+            <div className="flex flex-col gap-6 items-start md:items-end">
+              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500">Follow Us</h4>
+              <div className="flex gap-4">
+                <SocialIcon href="https://t.me/PropertiesInEthiopia" icon={<Send size={20} />} />
+                <SocialIcon href="https://wa.me/251913739983" icon={<MessageCircle size={20} />} />
+                <SocialIcon href="#" icon={<Globe size={20} />} />
+              </div>
+            </div>
           </div>
-          
-          <div className="flex gap-6">
-            <SocialIcon href="https://t.me/PropertiesInEthiopia" icon={<Send size={24} />} />
-            <SocialIcon href="https://wa.me/251913739983" icon={<MessageCircle size={24} />} />
-            <SocialIcon href="#" icon={<Globe size={24} />} />
+
+          {/* የታችኛው መስመር (The Professional Bottom Line) */}
+          <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p className="text-[9px] uppercase font-black tracking-[0.4em] text-gray-600">
+              © 2026 AK PROPERTY. All Rights Reserved.
+            </p>
+            
+            {/* ይሄ ክፍል ፕሮፌሽናል ያደርገዋል */}
+            <div className="flex items-center gap-2">
+              <span className="h-px w-8 bg-blue-600/30"></span>
+              <p className="text-[9px] uppercase font-black tracking-[0.2em] text-gray-500">
+                Developed by <span className="text-blue-500">Tesfaye Kifle Abera</span>
+              </p>
+              <span className="h-px w-8 bg-blue-600/30"></span>
+            </div>
+
+            <div className="flex gap-8 text-[9px] font-black uppercase tracking-widest text-gray-600">
+              <span className="hover:text-gray-400 cursor-pointer transition">Privacy Policy</span>
+              <span className="hover:text-gray-400 cursor-pointer transition">Terms of Service</span>
+            </div>
           </div>
         </div>
-        <div className="text-center mt-20 opacity-30 text-[10px] font-black uppercase tracking-[0.5em]">
-          © 2026 AK PROPERTY. All Rights Reserved.
-        </div>
-      </footer>
+      </footer
     </div>
   );
 }
